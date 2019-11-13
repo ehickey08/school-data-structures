@@ -33,7 +33,7 @@ class LRUCache:
             return None
         else:
             self.cache.move_to_end(node)
-            return node.value[1]
+            return node.value[key]
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -49,12 +49,13 @@ class LRUCache:
     def set(self, key, value):
         if key in self.storage:
             node = self.storage[key]
-            node.value = (key, value)
+            node.value = {key: value}
             self.cache.move_to_end(node)
         else:
             if self.cache.length == self.limit:
                 removed = self.cache.remove_from_head()
-                del self.storage[removed[0]]
-            self.cache.add_to_tail((key, value))
+                for k in removed:
+                    del self.storage[k]
+            self.cache.add_to_tail({key: value})
             self.storage[key] = self.cache.tail
 
