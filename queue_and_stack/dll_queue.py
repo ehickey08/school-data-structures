@@ -19,7 +19,7 @@ class Queue:
             self.size -= 1
             return self.storage.remove_from_tail()
         else:
-            return
+            return None
 
     def len(self):
         return self.size
