@@ -89,6 +89,7 @@ class BinarySearchTree:
             curr_node = curr_node.right
         return curr_node.value
 
+
     # recursive max
     '''
         def get_max(self):
@@ -108,11 +109,12 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
+        # run all the way down the left
         if node.left:
             self.in_order_print(node.left)
-
+        # root node
         print(node.value)
-
+        # right tree
         if node.right:
             self.in_order_print(node.right)
 
@@ -167,3 +169,13 @@ class BinarySearchTree:
 
 
 
+bst = BinarySearchTree(1)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+
+bst.in_order_print(bst)
